@@ -1,20 +1,12 @@
-# -*- coding: utf-8 -*-
-"""
-1. png files to binary and gray
-2. Edge detecting using cv2
-3. image(pixel data) open and save as array
-4. save  numpy array to pixel data
-5. add a gaussian noise to an image
-                                             
-"""
-
-                                                                       
+         
+#----ref: https://076923.github.io/posts/Python-opencv-10/
+                                                        
 import cv2
 
 #----------------------------------                                            
 # png files to binary
 
-src = cv2.imread("color.png", cv2.IMREAD_COLOR)
+src = cv2.imread("images/color.png", cv2.IMREAD_COLOR)
 #file size
 size=src.shape
 size
@@ -25,12 +17,12 @@ ret, dst = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)
 
 cv2.imshow("dst", dst)
 # save as file
-cv2.imwrite('bw.png', dst)
+cv2.imwrite('images/bw.png', dst)
 
 
 #----------------------------------
 # Edge 검출
-src = cv2.imread("edge.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("images/color.png", cv2.IMREAD_COLOR)
 gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 
 canny = cv2.Canny(src, 100, 255)
