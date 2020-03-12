@@ -43,7 +43,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Read image
-im = pilimg.open("color.png")
+im = pilimg.open("images/color.png")
 im.show()
  
 # Fetch image pixel data to numpy array
@@ -78,7 +78,7 @@ def sp_noise(image,prob):
                 output[i][j] = image[i][j]
     return output
 
-image = cv2.imread("bw.png", cv2.IMREAD_GRAYSCALE) # Only for grayscale image
+image = cv2.imread("images/bw.png", cv2.IMREAD_GRAYSCALE) # Only for grayscale image
 noise_img = sp_noise(image, 0.1)
 cv2.imwrite("sp_noise1.jpg", noise_img)
 
@@ -89,35 +89,20 @@ cv2.imwrite("sp_noise1.jpg", noise_img)
 
 import cv2                       
 
-  addtext = cv2.imread('sp_noise1.jpg', 1)
- #font = cv2.FONT_HERSHEY_SIMPLEX
-cv2.putText(addtext, '0.95', (10,450), font, 3, (0, 255, 0), 2, cv2.LINE_AA)
+# addtext.shape 명령어를 통해 text 위치결정(294,395)
+# 영점은 좌측상단
+font                   = cv2.FONT_HERSHEY_SIMPLEX
+bottomLeftCornerOfText = (150,280)
+fontScale = 1
+fontColor = (255,0,0)
+lineType               = 2
+
+addtext = cv2.imread('sp_noise1.jpg', 1)
+cv2.putText(addtext,"0.1",bottomLeftCornerOfText, 
+            font, fontScale, fontColor, lineType)
 cv2.imwrite('add_text.jpg', addtext)
     
-
-
-
-                                                                                                                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                                                    
 
 
 
