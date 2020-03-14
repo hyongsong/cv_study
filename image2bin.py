@@ -17,7 +17,7 @@ ret, dst = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)
 
 cv2.imshow("dst", dst)
 # save as file
-cv2.imwrite('images/bw.png', dst)
+cv2.imwrite('images/gray.png', dst)
 
 
 #----------------------------------
@@ -71,16 +71,16 @@ def sp_noise(image,prob):
         for j in range(image.shape[1]):
             rdn = random.random()
             if rdn < prob:
-                output[i][j] = 0
+                output[i][j] = 0 #pepper
             elif rdn > thres:
-                output[i][j] = 255
+                output[i][j] = 255 #salt
             else:
                 output[i][j] = image[i][j]
     return output
 
 image = cv2.imread("images/bw.png", cv2.IMREAD_GRAYSCALE) # Only for grayscale image
 noise_img = sp_noise(image, 0.1)
-cv2.imwrite("sp_noise1.jpg", noise_img)
+cv2.imwrite("sp_noise2.png", noise_img)
 
 
 #----------------------------------
